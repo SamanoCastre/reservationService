@@ -1,4 +1,4 @@
-package com.urgence.reservation.dtos;
+package com.hopital.reservation.dtos;
 
 public class ReservationDTO {
 	private int hopital_id;

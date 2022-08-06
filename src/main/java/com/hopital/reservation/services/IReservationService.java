@@ -1,6 +1,6 @@
-package com.urgence.reservation.services;
+package com.hopital.reservation.services;
 
-import com.urgence.reservation.entities.Reservation;
+import com.hopital.reservation.entities.Reservation;
 
 public interface IReservationService {
 	

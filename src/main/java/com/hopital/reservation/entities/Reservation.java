@@ -1,4 +1,4 @@
-package com.urgence.reservation.entities;
+package com.hopital.reservation.entities;
 
 import java.util.Date;
 
@@ -17,6 +17,10 @@ public class Reservation {
 	private Date date_creation;
 	private Date date_fin;
 	private String intervenant;
+	
+	public Reservation() {
+		
+	}
 	
 	public Reservation(int hopital_id, int specialite_id,Date date_creation, Date date_annulation, 
 			Date date_fin, String intervenant) {

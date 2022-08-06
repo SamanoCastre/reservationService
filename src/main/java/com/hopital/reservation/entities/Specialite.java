@@ -1,8 +1,6 @@
-package com.urgence.reservation.entities;
+package com.hopital.reservation.entities;
 
 import java.util.Date;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 public class Specialite {
 	

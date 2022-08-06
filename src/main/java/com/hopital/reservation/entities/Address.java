@@ -1,4 +1,4 @@
-package com.urgence.reservation.entities;
+package com.hopital.reservation.entities;
 
 
 public class Address {
