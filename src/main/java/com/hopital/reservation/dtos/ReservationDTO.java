@@ -11,6 +11,9 @@ public class ReservationDTO {
 		this.specialite_id = specialite_id;
 		this.intervenant = intervenant;
 	}
+	public ReservationDTO() {
+		
+	}
 	public int getHopital_id() {
 		return hopital_id;
 	}
@@ -28,5 +31,9 @@ public class ReservationDTO {
 	}
 	public void setIntervenant(String intervenant) {
 		this.intervenant = intervenant;
+	}
+	
+	public boolean valid() {
+		return this.hopital_id > 0 && this.specialite_id > 0 && this.intervenant != null;
 	}
 }

@@ -15,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@SuppressWarnings("finally")
 @RestController
 public class ReservationRestController {
 	Logger logger = LoggerFactory.getLogger(ReservationRestController.class);
@@ -25,32 +24,31 @@ public class ReservationRestController {
 	
 	@PostMapping("/reservation")
 	public Reservation reserverLitHopital(@RequestBody  ReservationDTO request) {
-		Reservation reservation = null;
+		
 		try {
-			reservation = this.reservationService.reserverUnLit(request.getHopital_id(), request.getSpecialite_id(), request.getIntervenant());
+			if(!request.valid()) {
+				throw new Exception("Au moins un champ mal renseigné");
+			}
+			return this.reservationService.reserverUnLit(request.getHopital_id(), request.getSpecialite_id(), request.getIntervenant());
 		}
 		catch(Exception e) {
 			this.logger.error(e.getMessage());
 		}
-		finally {
-			return reservation;
-		}
+		return null;
 	}
 	
 	@PutMapping("/reservation")
 	public Reservation terminerReservation(@RequestParam int reservation_id) {
-		Reservation reservation = null;
+		
 		try {
-			if(reservation_id <= 0) {
+			if(reservation_id < 1) {
 				throw new Exception("id réservation inférieur ou égal à 0");
 			}
-			reservation = this.reservationService.terminerReservation(reservation_id);
+			return this.reservationService.terminerReservation(reservation_id);
 		}
 		catch(Exception e) {
 			this.logger.error(e.getMessage());
 		}
-		finally {
-			return reservation;
-		}
+		return null;
 	}
 }
