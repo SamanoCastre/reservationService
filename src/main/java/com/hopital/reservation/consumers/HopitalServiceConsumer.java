@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hopital.reservation.entities.Disponibilite;
 
 
-@FeignClient(value = "hopital-service", url="${GATEWAY_URI}")
+@FeignClient(value = "hopital-service")
 public interface HopitalServiceConsumer {
 	
 	@PutMapping("/disponibilite/incrementer")
