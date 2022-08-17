@@ -1,4 +1,4 @@
-package com.hopital.reservation.entities;
+package com.hopital.reservation.unitTests.entities;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,6 +7,8 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.hopital.reservation.entities.Specialite;
 
 @SpringBootTest
 public class SpecialiteTest {

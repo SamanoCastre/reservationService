@@ -1,4 +1,4 @@
-package com.hopital.reservation.web;
+package com.hopital.reservation.integrationTests.web;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -46,7 +46,7 @@ public class ReservationRestControllerIntegrationTest {
 		this.mockMvc.perform(post("/reservation")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonRequest))
-				.andExpect(status().isOk())
+				.andExpect(status().isCreated())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.intervenant").value("Test")); 
 	}
 	
@@ -60,7 +60,7 @@ public class ReservationRestControllerIntegrationTest {
 		this.mockMvc.perform(post("/reservation")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonRequest))
-				.andExpect(status().isOk())
+				.andExpect(status().isNotModified())
 				.andExpect(MockMvcResultMatchers.jsonPath("$").doesNotExist()); 
 	}
 	
@@ -72,7 +72,7 @@ public class ReservationRestControllerIntegrationTest {
 		this.mockMvc.perform(put("/reservation")
 				.contentType(MediaType.APPLICATION_JSON)
 				.param("reservation_id", this.reservation.getReservation_id() + ""))
-				.andExpect(status().isOk())
+				.andExpect(status().isCreated())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.hopital_id").value(this.reservation.getHopital_id())); 
 	}
 	
@@ -84,7 +84,7 @@ public class ReservationRestControllerIntegrationTest {
 		this.mockMvc.perform(put("/reservation")
 				.contentType(MediaType.APPLICATION_JSON)
 				.param("reservation_id", this.reservation.getReservation_id() + ""))
-				.andExpect(status().isOk())
+				.andExpect(status().isNotModified())
 				.andExpect(MockMvcResultMatchers.jsonPath("$").doesNotExist()); 
 	}
 	

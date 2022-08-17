@@ -1,10 +1,12 @@
-package com.hopital.reservation.entities;
+package com.hopital.reservation.unitTests.entities;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.hopital.reservation.entities.Address;
 
 @SpringBootTest
 public class AddressTest {

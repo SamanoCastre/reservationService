@@ -1,4 +1,4 @@
-package com.hopital.reservation.services;
+package com.hopital.reservation.unitTests.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,9 +22,9 @@ import com.hopital.reservation.entities.Reservation;
 import com.hopital.reservation.entities.Specialite;
 import com.hopital.reservation.exceptions.DecrementationFailException;
 import com.hopital.reservation.exceptions.IncrementationFailException;
-import com.hopital.reservation.exceptions.ReservationFailException;
 import com.hopital.reservation.exceptions.ReservationNotFoundException;
 import com.hopital.reservation.repositories.ReservationRepository;
+import com.hopital.reservation.services.IReservationService;
 import com.hopital.reservation.services.impl.ReservationServiceImpl;
 
 

@@ -2,7 +2,6 @@ package com.hopital.reservation.services;
 
 import com.hopital.reservation.entities.Disponibilite;
 import com.hopital.reservation.entities.Reservation;
-import com.hopital.reservation.exceptions.DecrementationFailException;
 
 public interface IReservationService {
 	

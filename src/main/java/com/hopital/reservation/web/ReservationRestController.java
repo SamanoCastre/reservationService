@@ -1,6 +1,9 @@
 package com.hopital.reservation.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,33 +25,33 @@ public class ReservationRestController {
 	@Autowired
 	private IReservationService reservationService;
 	
-	@PostMapping("/reservation")
-	public Reservation reserverLitHopital(@RequestBody  ReservationDTO request) {
+	@PostMapping(path="/reservation", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Reservation> reserverLitHopital(@RequestBody  ReservationDTO request) {
 		
 		try {
 			if(!request.valid()) {
 				throw new Exception("Au moins un champ mal renseigné");
 			}
-			return this.reservationService.reserverUnLit(request.getHopital_id(), request.getSpecialite_id(), request.getIntervenant());
+			return new ResponseEntity<Reservation>(this.reservationService.reserverUnLit(request.getHopital_id(), request.getSpecialite_id(), request.getIntervenant()), HttpStatus.CREATED);
 		}
 		catch(Exception e) {
 			this.logger.error(e.getMessage());
+			return new ResponseEntity<Reservation>(HttpStatus.NOT_MODIFIED);
 		}
-		return null;
 	}
 	
-	@PutMapping("/reservation")
-	public Reservation terminerReservation(@RequestParam int reservation_id) {
+	@PutMapping(path="/reservation", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Reservation> terminerReservation(@RequestParam int reservation_id) {
 		
 		try {
 			if(reservation_id < 1) {
 				throw new Exception("id réservation inférieur ou égal à 0");
 			}
-			return this.reservationService.terminerReservation(reservation_id);
+			return new ResponseEntity<Reservation>(this.reservationService.terminerReservation(reservation_id), HttpStatus.CREATED);
 		}
 		catch(Exception e) {
 			this.logger.error(e.getMessage());
+			return new ResponseEntity<Reservation>(HttpStatus.NOT_MODIFIED);
 		}
-		return null;
 	}
 }
