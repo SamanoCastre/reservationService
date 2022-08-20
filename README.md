@@ -4,11 +4,11 @@ Reservation Service
 # Description of the project
 Reservation service is the microservice that manages the booking of a bed in hospital.
 
-Note 1 : the settings for this microservice are centralized in the configuration microservice. therefore, the latter must be fully operational in order to serve it its configuration parameters.
+Note 1 : the settings for hopital-service are centralized in the configuration microservice. therefore, the config-service must be fully operational in order to serve configuration parameters every other microservices.
 
-Note 2 : This microservice needs to register with the eureka registration service (registry-service). Therefore, the latter must be fully operational in order for it to register with it.
+Note 2 : The microservice "reservation-service" needs to register with the eureka registration service (registry-service). Therefore, the microservice "registre-service" must be fully operational in order for other microservices to be registrered.
 
-Note 3 : All access to this microservice must be done via the API gateway (Gateway-service). Therefore, the latter must be fully operational.
+Note 3 : All access to the microservice "reservation-service" must be done via the API gateway (Gateway-service). Therefore, the gateway-service must be fully operational.
 
 #Fonctionalities
 1. Reserver un lit dans un hopital
@@ -22,17 +22,13 @@ Note 3 : All access to this microservice must be done via the API gateway (Gatew
 2. Maven 3.8.6
 3. 
 
-
-#Dependencies
-1. spring-boot-starter-data-jpa
-2. spring-boot-starter-log4j2
-3. spring-cloud-starter-netflix-eureka-client
-4. spring-boot-starter-test
-5. spring-cloud-starter-openfeign
-
 #Data Storage
 1. booking data are stored in a mysql database (just ont table). See file: resources/reservation_bdd.sql
 2. Note : To update database configuration, got to the repo cloudConfig (https://github.com/SamanoCastre/cloudConfig)
+
+#Database creating
+1. Create a database with the name "reservation_bdd"
+2. import the file reservation_bdd.sql located under the subfolder /resource
 
 #Tests
 1. Unit Tests
