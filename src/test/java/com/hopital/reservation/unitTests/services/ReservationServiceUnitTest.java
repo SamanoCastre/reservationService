@@ -14,22 +14,22 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+
 import com.hopital.reservation.consumers.HopitalServiceConsumer;
 import com.hopital.reservation.entities.Address;
 import com.hopital.reservation.entities.Disponibilite;
 import com.hopital.reservation.entities.Hopital;
 import com.hopital.reservation.entities.Reservation;
 import com.hopital.reservation.entities.Specialite;
-import com.hopital.reservation.exceptions.DecrementationFailException;
-import com.hopital.reservation.exceptions.IncrementationFailException;
-import com.hopital.reservation.exceptions.ReservationNotFoundException;
+import com.hopital.reservation.exceptions.ResourceNotUpdatedException;
 import com.hopital.reservation.repositories.ReservationRepository;
 import com.hopital.reservation.services.IReservationService;
 import com.hopital.reservation.services.impl.ReservationServiceImpl;
 
 
 @SpringBootTest
-public class ReservationServiceTest {
+public class ReservationServiceUnitTest {
 	
 	@Mock
 	private HopitalServiceConsumer hopitalServiceConsumer;
@@ -60,7 +60,7 @@ public class ReservationServiceTest {
 	public void incrementerDisponibiliteInvalidTest() {
 
 		when(this.hopitalServiceConsumer.incrementerLits(anyInt(), anyInt())).thenReturn(null);
-		assertThrows(IncrementationFailException.class, 
+		assertThrows(ResourceNotUpdatedException.class, 
 				() -> { this.reservationService.incrementerDisponibilite(this.reservation.getHopital_id(), this.reservation.getSpecialite_id());});
 	}
 	
@@ -74,7 +74,7 @@ public class ReservationServiceTest {
 	public void decrementerDisponibiliteInvalidTest() {
 
 		when(this.hopitalServiceConsumer.decrementerLits(anyInt(), anyInt())).thenReturn(null);
-		assertThrows(DecrementationFailException.class, 
+		assertThrows(ResourceNotUpdatedException.class, 
 				() -> { this.reservationService.decrementerDisponibilite(this.reservation.getHopital_id(), this.reservation.getSpecialite_id());});
 	}
 	
@@ -82,7 +82,7 @@ public class ReservationServiceTest {
 	public void reserverUnLitDecrementationFailExceptionTest() throws Exception {
 		when(this.reservationRepository.save(any(Reservation.class))).thenReturn(this.reservation);
 		assertThrows(
-				DecrementationFailException.class, 
+				ResourceNotUpdatedException.class, 
 				() -> {this.reservationService.reserverUnLit(3, 3, "Samano_show");});
 	}
 	
@@ -90,7 +90,7 @@ public class ReservationServiceTest {
 	public void reserverUnLitReservationNotFoundExceptionTest() throws Exception {
 		when(this.hopitalServiceConsumer.decrementerLits(anyInt(), anyInt())).thenReturn(this.disponibilite);
 		assertThrows(
-				IncrementationFailException.class, 
+				ResourceNotUpdatedException.class, 
 				() -> {this.reservationService.reserverUnLit(3, 3, "Samano_show");});
 	}
 	
@@ -99,7 +99,7 @@ public class ReservationServiceTest {
 		
 		//when(this.reservationService.consulterReservation(anyInt())).thenReturn(this.reservation);
 		assertThrows(
-				ReservationNotFoundException.class, 
+				ResourceNotFoundException.class, 
 				() -> {this.reservationService.consulterReservation(0);});
 	}
 	

@@ -1,13 +1,13 @@
 package com.hopital.reservation.exceptions;
 
-public class ReservationNotFoundException extends Exception{
+public class NoDataFoundException extends RuntimeException{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ReservationNotFoundException(String message) {
+	public NoDataFoundException(String message) {
 		super(message);
 	}
 

@@ -1,8 +1,17 @@
 package com.hopital.reservation.dtos;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
 public class ReservationDTO {
+	
+	@Min(1)
 	private int hopital_id;
+	
+	@Min(1)
 	private int specialite_id;
+	
+	@NotEmpty
 	private String intervenant;
 	
 	public ReservationDTO(int hopital_id, int specialite_id, String intervenant) {
@@ -33,7 +42,4 @@ public class ReservationDTO {
 		this.intervenant = intervenant;
 	}
 	
-	public boolean valid() {
-		return this.hopital_id > 0 && this.specialite_id > 0 && this.intervenant != null;
-	}
 }

@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hopital.reservation.entities.Specialite;
 
 @SpringBootTest
-public class SpecialiteTest {
+public class SpecialiteUnitTest {
 	private Specialite specialite;
 	
 	@BeforeEach

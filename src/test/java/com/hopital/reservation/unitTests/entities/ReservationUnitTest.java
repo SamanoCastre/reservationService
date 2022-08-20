@@ -12,7 +12,7 @@ import com.hopital.reservation.entities.Reservation;
 
 
 @SpringBootTest
-public class ReservationTest {
+public class ReservationUnitTest {
 	
 	private Reservation reservation;
 	

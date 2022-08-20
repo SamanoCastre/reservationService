@@ -14,12 +14,13 @@ Note 3 : All access to this microservice must be done via the API gateway (Gatew
 1. Reserver un lit dans un hopital
 
 #Endpoints
-1. POST:/reserver: allows book a bed in a hospital
-5. PUT:/reserver: used to end the booking
+1. POST:/reservation: allows book a bed in a hospital
+5. PUT:/reservation: used to end the booking
 
 #Requirements
 1. Java 17
 2. Maven 3.8.6
+3. 
 
 
 #Dependencies

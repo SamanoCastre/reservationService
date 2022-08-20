@@ -1,13 +1,13 @@
 package com.hopital.reservation.exceptions;
 
-public class DecrementationFailException extends Exception{
-
+public class ResourceNotUpdatedException extends RuntimeException{
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public DecrementationFailException(String message) {
+
+	public ResourceNotUpdatedException(String message) {
 		super(message);
 	}
 

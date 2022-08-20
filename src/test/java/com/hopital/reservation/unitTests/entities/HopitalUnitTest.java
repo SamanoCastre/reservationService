@@ -12,7 +12,7 @@ import com.hopital.reservation.entities.Address;
 import com.hopital.reservation.entities.Hopital;
 
 @SpringBootTest
-public class HopitalTest {
+public class HopitalUnitTest {
 	Hopital hopital;
 	
 	@BeforeEach

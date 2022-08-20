@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hopital.reservation.dtos.ReservationDTO;
 
 @SpringBootTest
-public class ReservationDTOTest {
+public class ReservationDTOUnitTest {
 	
 	private ReservationDTO reservationDTO;
 	
@@ -29,7 +29,6 @@ public class ReservationDTOTest {
 		assertEquals(testReservationDTO.getHopital_id(), this.reservationDTO.getHopital_id());
 		assertEquals(testReservationDTO.getSpecialite_id(), this.reservationDTO.getSpecialite_id());
 		assertEquals(testReservationDTO.getIntervenant(), this.reservationDTO.getIntervenant());
-		assertEquals(testReservationDTO.valid(), this.reservationDTO.valid());
 	}
 
 }

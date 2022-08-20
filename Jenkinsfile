@@ -21,7 +21,7 @@ pipeline{
             publishHTML	(target:	[
 				reportDir:	'target/site/jacoco',
 				reportFiles:	'index.html',
-				reportName:	"Code coverage report"
+				reportName:	"CodeCoverageReport"
 			])
             bat "mvn clean verify"
             

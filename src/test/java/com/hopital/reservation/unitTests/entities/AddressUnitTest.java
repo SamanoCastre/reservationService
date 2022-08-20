@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hopital.reservation.entities.Address;
 
 @SpringBootTest
-public class AddressTest {
+public class AddressUnitTest {
 	private Address address;
 	
 	@BeforeEach

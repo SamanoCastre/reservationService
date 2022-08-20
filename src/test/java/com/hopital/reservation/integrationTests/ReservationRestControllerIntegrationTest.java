@@ -1,4 +1,4 @@
-package com.hopital.reservation.integrationTests.web;
+package com.hopital.reservation.integrationTests;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -51,20 +51,6 @@ public class ReservationRestControllerIntegrationTest {
 	}
 	
 	@Test
-	public void reserverLitInvalidTest() throws Exception {
-		
-		when(this.reservationService.reserverUnLit(anyInt(), anyInt(), any(String.class))).thenReturn(this.reservation);
-		
-		String jsonRequest = "{\"hopital_id\":"+0+",\"specialite_id\":"+0+",\"intervenant\":\""+this.reservation.getIntervenant()+"\"}";
-		
-		this.mockMvc.perform(post("/reservation")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonRequest))
-				.andExpect(status().isNotModified())
-				.andExpect(MockMvcResultMatchers.jsonPath("$").doesNotExist()); 
-	}
-	
-	@Test
 	public void terminerReservationValidTest() throws Exception {
 		this.reservation.setReservation_id(1);
 		when(this.reservationService.terminerReservation(anyInt())).thenReturn(this.reservation);
@@ -75,17 +61,4 @@ public class ReservationRestControllerIntegrationTest {
 				.andExpect(status().isCreated())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.hopital_id").value(this.reservation.getHopital_id())); 
 	}
-	
-	@Test
-	public void terminerReservationInvalidTest() throws Exception {
-		this.reservation.setReservation_id(0);
-		when(this.reservationService.terminerReservation(anyInt())).thenReturn(this.reservation);
-		
-		this.mockMvc.perform(put("/reservation")
-				.contentType(MediaType.APPLICATION_JSON)
-				.param("reservation_id", this.reservation.getReservation_id() + ""))
-				.andExpect(status().isNotModified())
-				.andExpect(MockMvcResultMatchers.jsonPath("$").doesNotExist()); 
-	}
-	
 }

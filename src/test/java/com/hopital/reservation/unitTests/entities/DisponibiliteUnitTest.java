@@ -14,7 +14,7 @@ import com.hopital.reservation.entities.Hopital;
 import com.hopital.reservation.entities.Specialite;
 
 @SpringBootTest
-public class DisponibiliteTest {
+public class DisponibiliteUnitTest {
 	private Disponibilite disponibilite;
 	
 	@BeforeEach
