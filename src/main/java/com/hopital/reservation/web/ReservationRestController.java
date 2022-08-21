@@ -30,12 +30,23 @@ public class ReservationRestController {
 	@Autowired
 	private IReservationService reservationService;
 	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 * @throws ResourceNotUpdatedException
+	 */
 	@PostMapping(path="/reservation", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Reservation> reserverLitHopital(
 			@RequestBody  @Valid ReservationDTO request) throws ResourceNotUpdatedException {
 			return new ResponseEntity<Reservation>(this.reservationService.reserverUnLit(request.getHopital_id(), request.getSpecialite_id(), request.getIntervenant()), HttpStatus.CREATED);
 	}
 	
+	/**
+	 * 
+	 * @param reservation_id
+	 * @return
+	 */
 	@PutMapping(path="/reservation", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Reservation> terminerReservation(
 			@RequestParam @Min(1) int reservation_id) {
