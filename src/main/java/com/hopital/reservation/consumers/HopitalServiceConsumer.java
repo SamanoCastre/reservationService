@@ -4,11 +4,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.hopital.reservation.entities.Disponibilite;
 
 
-@FeignClient(value = "hopital-service")
+@FeignClient(value = "hopital-service", url="${gateway.service.uri}", configuration = FeignClientConfiguration.class)
 public interface HopitalServiceConsumer {
 	
 	@PutMapping("/disponibilite/incrementer")
