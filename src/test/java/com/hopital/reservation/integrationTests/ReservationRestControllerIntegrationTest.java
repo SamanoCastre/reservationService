@@ -4,7 +4,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Date;
@@ -48,17 +47,5 @@ public class ReservationRestControllerIntegrationTest {
 				.content(jsonRequest))
 				.andExpect(status().isCreated())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.intervenant").value("Test")); 
-	}
-	
-	@Test
-	public void terminerReservationValidTest() throws Exception {
-		this.reservation.setReservation_id(1);
-		when(this.reservationService.terminerReservation(anyInt())).thenReturn(this.reservation);
-		
-		this.mockMvc.perform(put("/reservation")
-				.contentType(MediaType.APPLICATION_JSON)
-				.param("reservation_id", this.reservation.getReservation_id() + ""))
-				.andExpect(status().isCreated())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.hopital_id").value(this.reservation.getHopital_id())); 
 	}
 }

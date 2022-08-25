@@ -11,8 +11,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 	
-	@ExceptionHandler(value = {ResourceNotFoundException.class, NoDataFoundException.class})
-	  public ResponseEntity<ErrorMessage> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+	@ExceptionHandler(value = {ResourceNotFoundException.class})
+	  public ResponseEntity<ErrorMessage> resourceNotFoundException(RuntimeException ex, WebRequest request) {
 		ErrorMessage message = new ErrorMessage(
 		        HttpStatus.NOT_FOUND.value(),
 		        new Date(),
@@ -22,8 +22,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler  {
 	    return new ResponseEntity<ErrorMessage>(message, HttpStatus.NOT_FOUND);
 	  }
 	
-	@ExceptionHandler(value = {ResourceNotUpdatedException.class, ResourceNotInsertedException.class})
-	  public ResponseEntity<ErrorMessage> resourceNotUpdatedException(ResourceNotUpdatedException ex, WebRequest request) {
+	@ExceptionHandler(value = {ResourceNotInsertedException.class})
+	  public ResponseEntity<ErrorMessage> resourceNotUpdatedException(RuntimeException ex, WebRequest request) {
 		ErrorMessage message = new ErrorMessage(
 		        HttpStatus.NOT_MODIFIED.value(),
 		        new Date(),
