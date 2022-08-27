@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Date;
+
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +42,15 @@ public class ReservationRestControllerIntegrationTest {
 		
 		when(this.reservationService.reserverUnLit(anyInt(), anyInt(), any(String.class))).thenReturn(this.reservation);
 		
-		String jsonRequest = "{\"hopital_id\":"+this.reservation.getHopital_id()+",\"specialite_id\":"+this.reservation.getSpecialite_id()+",\"intervenant\":\""+this.reservation.getIntervenant()+"\"}";
+		JSONObject json = new JSONObject();
+		json.put("hopital_id", this.reservation.getHopital_id());
+		json.put("specialite_id", this.reservation.getSpecialite_id());
+		json.put("intervenant", this.reservation.getIntervenant());
 		
 		this.mockMvc.perform(post("/reservation")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonRequest))
+				.content(json.toString()))
 				.andExpect(status().isCreated())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.intervenant").value("Test")); 
+				.andExpect(MockMvcResultMatchers.jsonPath("$.intervenant").value(json.get("intervenant"))); 
 	}
 }
