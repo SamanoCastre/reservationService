@@ -51,3 +51,10 @@ command line : mvn clean package -DskipTests (see the project's jenkins file)
 
 #Deploy
 command line : mvn spring-boot:run
+
+#Full system deployment order
+1. Deploy the MS config-service as indicated in the readme.md located the classpath of the config-service project.
+2. Deploy the MS registre-service as indicated in the readme.md located the classpath of the registre-service project.
+3. Deploy the MS gateway-service as indicated in the readme.md located the classpath of the gateway-service project.
+4. Deploy the MS hopital-service as indicated in the readme.md located the classpath of the hopital-service project.
+5. Deploy the MS reservation-service as indicated in the readme.md located the classpath of the reservation-service project.
