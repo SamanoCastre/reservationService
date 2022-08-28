@@ -23,12 +23,12 @@ Note 3 : All access to the microservice "reservation-service" must be done via t
 3. 
 
 #Data Storage
-1. booking data are stored in a mysql database (just ont table). See file: resources/reservation_bdd.sql
+1. bed booking data are stored in a mysql database (just ont table). See file: resources/reservation_bdd.sql
 2. Note : To update database configuration, got to the repo cloudConfig (https://github.com/SamanoCastre/cloudConfig)
 
 #Database creating
 1. Create a database with the name "reservation_bdd"
-2. import the file reservation_bdd.sql located under the subfolder /resource
+2. import the file reservation_bdd.sql located under the subfolder /resource to the database created
 
 #CI-CD Pipelines
 1. See the project's configuration Jenkinsfile located in the classpath of the project
